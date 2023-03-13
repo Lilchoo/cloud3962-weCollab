@@ -1,17 +1,14 @@
-function myAccFunc() {
-  var x = document.getElementById("demoAcc");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
+function dropdown() { 
+  console.log($(this).children().first())
+  if (!$(this).next().hasClass("w3-show")) {
+    $(this).next().addClass("w3-show");
+    $(this).children().first().removeClass("fa-caret-down").addClass("fa-caret-up")
   } else {
-    x.className = x.className.replace(" w3-show", "");
+    $(this).next().removeClass("w3-show").addClass("w3-hide");
+    $(this).children().first().removeClass("fa-caret-up").addClass("fa-caret-down")
   }
 }
 
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
-document.getElementById("myBtn").click();
-
-
-// Open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("myOverlay").style.display = "block";
@@ -21,3 +18,9 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("myOverlay").style.display = "none";
 }
+
+function setup() {
+  $(".clothing-dropdown-btn").click(dropdown)
+}
+
+$(document).ready(setup)
