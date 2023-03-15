@@ -11,11 +11,27 @@ const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
     case "ADD_TO_BASKET":
-      return {
-        ...state,
-        basket: [...state.basket, action.item],
-      };
-    
+      let sameItem = false;
+      for (let product of state.basket) {
+        if (action.item.id === product.id) {
+          product['amount'] += 1;
+          sameItem = true;
+          break;
+        }
+      }
+      if (!sameItem) {
+        action.item['amount'] = 1;
+        return {
+          ...state,
+          basket: [...state.basket, action.item]
+        }
+      } else {
+        return {
+          ...state,
+          basket: state.basket
+        }
+      }
+
     case 'EMPTY_BASKET':
       return {
         ...state,
