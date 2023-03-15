@@ -10,7 +10,7 @@ function Checkout() {
   return (
     <div className="checkout">
         <div className="checkout-header">
-          <h3>Hello, {user?.email}</h3>
+          <h3>Hello, {user === null ? "Guest" : user?.email}</h3>
           <h3 className="checkout-title">Your shopping Basket</h3>
         </div>
 
