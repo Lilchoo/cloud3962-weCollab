@@ -1,7 +1,7 @@
 .checkout-product {
     display: flex;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
+    padding: 10px;
 }
 
 .checkout-product-info {
@@ -18,8 +18,7 @@
 
 .checkout-product-image {
     object-fit: contain;
-    width: 100%;
-    height: 100%;
+    width: 30%;
   }
 
 .checkout-product-rating {
@@ -27,6 +26,5 @@
   }
 
 .checkout-product-title {
-    font-size: 17px;
-    font-weight: 800;
+    font-size: 1em;
 }
