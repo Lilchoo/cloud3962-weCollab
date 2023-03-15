@@ -24,6 +24,9 @@
   height: 70%;
   overflow: auto;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .checkout-footer {
