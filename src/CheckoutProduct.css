@@ -2,29 +2,35 @@
     display: flex;
     margin: 20px 0 20px 0;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .checkout-product-info {
     padding-left: 20px;
     display: flex;
     flex-direction: column;
+    width: 60%;
     justify-content: space-between;
 }
 
 .checkout-product-remove {
     background-color: black;
     color: white;
-    font-size: 15px;
+    font-size: .75em;
     padding: 10px 20px;
     border-radius: 5px;
     margin: 5px 0px;
     cursor: pointer;
 }
 
+.checkout-product-image-container {
+    width: 40%;
+}
+
 .checkout-product-image {
-    object-fit: contain;
-    width: 30%;
-  }
+    object-fit: fill;
+    width: 100%;
+}
 
 .checkout-product-rating {
     display: flex;
