@@ -11,10 +11,9 @@
     justify-content: space-between;
 }
 
-.checkout-product-info > button {
+.checkout-product-remove {
     background: #f0c14b;
     border: 1px solid;
-    margin-top: 10px;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
 }
@@ -30,4 +29,15 @@
 
 .checkout-product-title {
     font-size: 1em;
+}
+
+.checkout-product-remove-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-product-remove {
+    width: 60%;
 }
