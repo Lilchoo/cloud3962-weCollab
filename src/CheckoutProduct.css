@@ -5,7 +5,10 @@
 }
 
 .checkout-product-info {
-    padding-left: 20px
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .checkout-product-info > button {
