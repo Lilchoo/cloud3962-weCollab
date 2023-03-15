@@ -1,18 +1,33 @@
 .checkout {
   height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.checkout > div {
+  margin: 10px;
 }
 
 .checkout-header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 15%;
+  height: 10%;
   padding: 20px;
   background-color: white;
 }
 
 .checkout-body {
   height: 70%;
+  overflow: auto;
+  background-color: white;
+}
+
+.checkout-footer {
+  height: 20%;
 }
 
 .checkout-title {

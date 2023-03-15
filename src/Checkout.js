@@ -26,7 +26,7 @@ function Checkout() {
           ))}
         </div>
 
-      <div>
+      <div className="checkout-footer">
         <Subtotal />
       </div>
     </div>
