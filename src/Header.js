@@ -29,7 +29,7 @@ function Header() {
           </div>
         </Link>
 
-        <Link to="/checkout">
+        <Link to="/checkout" className="header-no-underline">
           <div className="header-optionBasket">
             <ShoppingBasketIcon />
             <span className="header-optionLineTwo header-basketCount">
