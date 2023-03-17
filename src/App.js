@@ -50,50 +50,43 @@ function App() {
     <Routes>
       <Route path="/orders" 
       element={
-        <div>
+        <>
           <Header/>
           <Orders/>
-        </div>
-}/>
-      
+        </>
+      }/>
 
       <Route path="/login"
       element={
-        <div>
+        <>
           <Login/>
-        </div>
+        </>
       }/>
-
 
       <Route path="/checkout"
       element={
-        <div>
+        <>
           <Header />
           <Checkout />
-        </div>
+        </>
       }/>
-
-
 
       <Route path="/payment"
       element={
-        <div>
+        <>
           <Header />
           <Elements stripe={promise}>
             <Payment />
           </Elements>
-          
-        </div>
+        </>
       }/>
-
-
+      
       <Route path="/"
       element={
-        <div>
+        <>
           <Header />
           <Home />
-
-        </div>
+        </>
       }/>
 
     </Routes>
