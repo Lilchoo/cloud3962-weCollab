@@ -10,14 +10,13 @@ import Orders from "./Orders";
 import { useStateValue } from "./StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { useLocation } from "react-router-dom";
 
 const promise = loadStripe(
   "pk_test_51HPvU9DFg5koCdLGJJbNo60QAU99BejacsvnKvT8xnCu1wFLCuQP3WBArscK3RvSQmSIB3N0Pbsc7TtbQiJ1vaOi00X9sIbazL"
 );
 
 function App() {
-  const [{}, dispatch] = useStateValue();
+  const [{ }, dispatch] = useStateValue();
 
 
   useEffect(() => {
@@ -45,60 +44,49 @@ function App() {
 
 
   return (
-<Router>
-  <div className="app">
-    <Routes>
-      <Route path="/orders" 
-      element={
-        <div>
-          <Header/>
-          <Orders/>
-        </div>
-}/>
-      
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/orders"
+            element={
+              <div>
+                <Header />
+                <Orders />
+              </div>
+            } />
+          <Route path="/login"
+            element={
+              <div>
+                <Login />
+              </div>
+            } />
+          <Route path="/checkout"
+            element={
+              <div>
+                <Header />
+                <Checkout />
+              </div>
+            } />
+          <Route path="/payment"
+            element={
+              <div>
+                <Header />
+                <Elements stripe={promise}>
+                  <Payment />
+                </Elements>
 
-      <Route path="/login"
-      element={
-        <div>
-          <Login/>
-        </div>
-      }/>
-
-
-      <Route path="/checkout"
-      element={
-        <div>
-          <Header />
-          <Checkout />
-        </div>
-      }/>
-
-
-
-      <Route path="/payment"
-      element={
-        <div>
-          <Header />
-          <Elements stripe={promise}>
-            <Payment />
-          </Elements>
-          
-        </div>
-      }/>
-
-
-      <Route path="/"
-      element={
-        <div>
-          <Header />
-          <Home />
-
-        </div>
-      }/>
-
-    </Routes>
-  </div>
-</Router>
+              </div>
+            } />
+          <Route path="/"
+            element={
+              <div>
+                <Header />
+                <Home />
+              </div>
+            } />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
