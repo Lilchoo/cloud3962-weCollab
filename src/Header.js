@@ -31,7 +31,7 @@ function Header() {
 
         <Link to="/checkout" className="header-no-underline">
           <div className="header-optionBasket">
-            {/* <ShoppingBasketIcon /> */}
+            <ShoppingBasketIcon />
             <span className="header-optionLineTwo header-basketCount">
               {basket?.length}
             </span>
