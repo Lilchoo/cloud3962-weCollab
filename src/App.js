@@ -11,6 +11,7 @@ import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { useLocation } from "react-router-dom";
 
 const promise = loadStripe(
   "pk_test_51HPvU9DFg5koCdLGJJbNo60QAU99BejacsvnKvT8xnCu1wFLCuQP3WBArscK3RvSQmSIB3N0Pbsc7TtbQiJ1vaOi00X9sIbazL"
@@ -18,6 +19,7 @@ const promise = loadStripe(
 
 function App() {
   const [{}, dispatch] = useStateValue();
+
 
   useEffect(() => {
     // will only run once when the app component loads...
@@ -42,34 +44,62 @@ function App() {
     // });
   }, []);
 
+
   return (
-    <Router>
-      <div className="app">
-        <Routes>
-          <Route path="/orders">
-            <Header />
-            <Orders />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/checkout">
-            <Header />
-            <Checkout />
-          </Route>
-          <Route path="/payment">
-            <Header />
-            <Elements stripe={promise}>
-              <Payment />
-            </Elements>
-          </Route>
-          <Route path="/">
-            <Header />
-            <Home />
-          </Route>
-        </Routes>
-      </div>
-    </Router>
+<Router>
+  <div className="app">
+    <Routes>
+      <Route path="/orders" 
+      element={
+        <div>
+          <Header/>
+          <Orders/>
+        </div>
+}/>
+      
+
+      <Route path="/login"
+      element={
+        <div>
+          <Login/>
+        </div>
+      }/>
+
+
+      <Route path="/checkout"
+      elemtn={
+        <div>
+          <Header />
+          <Checkout />
+        </div>
+      }/>
+
+
+
+      <Route path="/payment"
+      element={
+        <div>
+          <Header />
+          <Elements stripe={promise}>
+            <Payment />
+          </Elements>
+          
+        </div>
+      }/>
+
+
+      <Route path="/"
+      element={
+        <div>
+          <Header />
+          <Home />
+
+        </div>
+      }/>
+
+    </Routes>
+  </div>
+</Router>
   );
 }
 
