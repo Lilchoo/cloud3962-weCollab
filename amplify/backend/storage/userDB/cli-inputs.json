@@ -1,0 +1,10 @@
+{
+  "resourceName": "userDB",
+  "tableName": "userTable",
+  "partitionKey": {
+    "fieldName": "username",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
