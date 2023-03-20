@@ -1,3 +1,5 @@
+import { Auth, API } from "aws-amplify";
+
 export const initialState = {
   basket: [],
   user: null
@@ -21,15 +23,19 @@ const reducer = (state, action) => {
       }
       if (!sameItem) {
         action.item['amount'] = 1;
-        return {
-          ...state,
-          basket: [...state.basket, action.item]
-        }
-      } else {
-        return {
-          ...state,
-          basket: state.basket
-        }
+        state.basket = [...state.basket, action.item];
+      }
+      console.log(state.basket);
+      Auth.currentAuthenticatedUser()
+        .then(user => {
+          API.patch("user", "/user/updateCart", { body: { username: user.username, basket: state.basket } })
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+      return {
+        ...state,
+        basket: state.basket
       }
 
     case 'EMPTY_BASKET':
@@ -53,6 +59,14 @@ const reducer = (state, action) => {
         )
       }
 
+      Auth.currentAuthenticatedUser()
+      .then(user => {
+        API.patch("user", "/user/updateCart", { body: { username: user.username, basket: state.basket } })
+          .then(data => console.log(data))
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
+
       return {
         ...state,
         basket: newBasket
@@ -62,6 +76,26 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user
+      }
+
+    case "PURCHASE":
+      console.log(state.basket);
+      Auth.currentAuthenticatedUser()
+        .then(user => {
+          API.patch("user", "/user/updatePurchases", {
+            body: { username: user.username, basket: state.basket }
+          })
+          .then(data => {
+            console.log(data)
+            API.patch("user", "/user/updateCart", { body: { username: user.username, basket: [] } })
+          })
+          .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+        action.link("/")
+      return {
+        ...state,
+        basket: []
       }
 
     default:

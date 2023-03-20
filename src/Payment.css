@@ -38,7 +38,7 @@
   }
 
 
-  .payment__details > form > div > button {
+  .payment__details__button {
     background: black;
     border-radius: 2px;
     width: 100%;
