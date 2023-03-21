@@ -88,7 +88,7 @@ const reducer = (state, action) => {
           })
           .then(data => {
             console.log(data)
-            API.patch("user", "/user/updateCart", { body: { username: user.username, basket: {} } })
+            API.patch("user", "/user/updateCart", { body: { username: user.username, basket: [] } })
           })
           .catch(err => console.log(err))
         })
