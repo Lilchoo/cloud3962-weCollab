@@ -87,7 +87,7 @@ const reducer = (state, action) => {
           const purchase = {};
           purchase[uuidVal] = state.basket;
           API.patch("user", "/user/updatePurchases", {
-            body: { username: user.username, purchases: purchase }
+            body: { username: user.username, baskets: purchase }
           })
           .then(data => {
             console.log(data)
