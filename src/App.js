@@ -9,7 +9,6 @@ import Orders from "./Orders";
 import { useStateValue } from "./StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { initialState } from "./reducer";
 
 // AWS Amplify logic
 import { Amplify, API, Hub } from 'aws-amplify'
