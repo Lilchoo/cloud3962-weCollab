@@ -83,9 +83,9 @@ const reducer = (state, action) => {
       console.log(state.basket);
       Auth.currentAuthenticatedUser()
         .then(user => {
-          const uuid = uuidv4(); // generate a random UUID
+          const uuidVal = uuid.v4(); // generate a random UUID
           const purchase = {};
-          purchase[uuid] = state.basket;
+          purchase[uuidVal] = state.basket;
           API.patch("user", "/user/updatePurchases", {
             body: { username: user.username, purchases: purchase }
           })
