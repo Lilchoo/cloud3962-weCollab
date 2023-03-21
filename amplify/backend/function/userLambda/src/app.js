@@ -179,7 +179,7 @@ app.patch(path + "/updatePurchases", function(req, res) {
       "#purchases": "purchases"
     },
     ExpressionAttributeValues: {
-      ":basket": req.body.basket,
+      ":basket": [req.body.basket],
       ":empty_list": [],
     }
   };
