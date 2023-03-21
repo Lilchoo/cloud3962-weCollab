@@ -86,6 +86,7 @@ const reducer = (state, action) => {
           const uuidVal = uuid.v4(); // generate a random UUID
           const purchase = {};
           purchase[uuidVal] = state.basket;
+          console.log(purchase)
           API.patch("user", "/user/updatePurchases", {
             body: { username: user.username, basket: purchase }
           })
