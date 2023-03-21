@@ -1,4 +1,5 @@
 import { Auth, API } from "aws-amplify";
+import uuid from 'react-native-uuid';
 
 export const initialState = {
   basket: [],
@@ -83,11 +84,11 @@ const reducer = (state, action) => {
       Auth.currentAuthenticatedUser()
         .then(user => {
           API.patch("user", "/user/updatePurchases", {
-            body: { username: user.username, basket: state.basket }
+            body: { username: user.username, basket: {id: uuid.v4(), items: state.basket }}
           })
           .then(data => {
             console.log(data)
-            API.patch("user", "/user/updateCart", { body: { username: user.username, basket: [] } })
+            API.patch("user", "/user/updateCart", { body: { username: user.username, basket: {} } })
           })
           .catch(err => console.log(err))
         })
