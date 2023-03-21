@@ -1,5 +1,5 @@
 import { Auth, API } from "aws-amplify";
-import { uuid } from 'uuidv4';
+import uuid from 'react-native-uuid';
 
 export const initialState = {
   basket: [],
