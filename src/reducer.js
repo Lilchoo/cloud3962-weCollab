@@ -84,7 +84,7 @@ const reducer = (state, action) => {
       Auth.currentAuthenticatedUser()
         .then(user => {
           API.patch("user", "/user/updatePurchases", {
-            body: { username: user.username, basket: {id: uuid.v4(), items: state.basket }}
+            body: { username: user.username, basket: state.basket}
           })
           .then(data => {
             console.log(data)
