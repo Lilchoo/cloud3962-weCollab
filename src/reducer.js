@@ -27,7 +27,6 @@ const reducer = (state, action) => {
         state.basket = [...state.basket, action.item];
       }
       console.log(state.basket);
-      console.log(user.attributes.email)
       Auth.currentAuthenticatedUser()
         .then(user => {
           API.patch("user", "/user/updateCart", { body: { email: user.attributes.email, basket: state.basket } })
