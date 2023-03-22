@@ -29,7 +29,7 @@ const reducer = (state, action) => {
       console.log(state.basket);
       Auth.currentAuthenticatedUser()
         .then(user => {
-          API.patch("user", "/user/updateCart", { body: { username: user.username, basket: state.basket } })
+          API.patch("user", "/user/updateCart", { body: { email: user.attributes.email, basket: state.basket } })
             .then(data => console.log(data))
             .catch(err => console.log(err))
         })
@@ -62,7 +62,7 @@ const reducer = (state, action) => {
 
       Auth.currentAuthenticatedUser()
       .then(user => {
-        API.patch("user", "/user/updateCart", { body: { username: user.username, basket: state.basket } })
+        API.patch("user", "/user/updateCart", { body: { email: user.attributes.email, basket: state.basket } })
           .then(data => console.log(data))
           .catch(err => console.log(err))
       })
@@ -89,11 +89,11 @@ const reducer = (state, action) => {
           console.log("UUID: " + uuidVal)
           console.log("Check purchase: " + purchase)
           API.patch("user", "/user/updatePurchases", {
-            body: { username: user.username, basket: purchase }
+            body: { email: user.attributes.email, basket: purchase }
           })
           .then(data => {
             console.log(data)
-            API.patch("user", "/user/updateCart", { body: { username: user.username, basket: [] } })
+            API.patch("user", "/user/updateCart", { body: { email: user.attributes.email, basket: [] } })
           })
           .catch(err => console.log(err))
         })
