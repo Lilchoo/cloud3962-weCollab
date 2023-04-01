@@ -52,7 +52,7 @@
           "s3Key": "amplify-builds/userLambda-54526d4e742b34775147-build.zip"
         },
         "userDB": {},
-        "purchaseslambda": {}
+        "purchaselambda": {}
       },
       "api": {
         "user": {}

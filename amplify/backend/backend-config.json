@@ -44,8 +44,17 @@
     }
   },
   "function": {
-    "purchaseslambda": {
+    "purchaselambda": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "userDB"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },

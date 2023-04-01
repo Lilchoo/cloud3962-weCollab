@@ -16,6 +16,16 @@
         "s3Key": {
             "Type": "String"
         }
+        ,
+    
+    
+    
+        "storageuserDBStreamArn": {
+            "Type": "String",
+            "Default": "storageuserDBStreamArn"
+            }
+        
+    
         
     
     },
@@ -49,13 +59,13 @@
             "FunctionName": {
                 "Fn::If": [
                     "ShouldNotCreateEnvResources",
-                    "purchaseslambda",
+                    "purchaselambda",
                     {
 
                         "Fn::Join": [
                             "",
                             [
-                                "purchaseslambda",
+                                "purchaselambda",
                                 "-",
                                 {
                                     "Ref": "env"
@@ -80,13 +90,13 @@
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
-                        "wecollabapitestLambdaRole2ef8ab70",
+                        "wecollabapitestLambdaRolec1e3283f",
                         {
 
                             "Fn::Join": [
                                 "",
                                 [
-                                    "wecollabapitestLambdaRole2ef8ab70",
+                                    "wecollabapitestLambdaRolec1e3283f",
                                     "-",
                                     {
                                         "Ref": "env"
@@ -134,6 +144,40 @@
                 }
             }
         }
+        
+        
+        ,"LambdaTriggerPolicy": {
+            "DependsOn": ["LambdaExecutionRole"],
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "PolicyName": "amplify-lambda-execution-policy-",
+                "Roles": [{ "Ref": "LambdaExecutionRole" }],
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{"Effect":"Allow","Action":["dynamodb:DescribeStream","dynamodb:GetRecords","dynamodb:GetShardIterator","dynamodb:ListStreams"],"Resource":{"Ref":"storageuserDBStreamArn"}}]
+                }
+            }
+        }
+        ,"LambdaEventSourceMapping": {
+            "Type": "AWS::Lambda::EventSourceMapping",
+            "DependsOn": [
+                "LambdaTriggerPolicy",
+                "LambdaExecutionRole"
+            ],
+            "Properties": {
+                "BatchSize": 100,
+                "Enabled": true,
+                "EventSourceArn": {"Ref":"storageuserDBStreamArn"},
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "LambdaFunction",
+                        "Arn"
+                    ]
+                },
+                "StartingPosition": "LATEST"
+            }
+        }
+        
         
         
     },
