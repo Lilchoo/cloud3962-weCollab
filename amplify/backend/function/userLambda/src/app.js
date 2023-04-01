@@ -24,7 +24,7 @@ if (process.env.ENV && process.env.ENV !== "NONE") {
 }
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
-const partitionKeyName = "username";
+const partitionKeyName = "email";
 const partitionKeyType = "S";
 const sortKeyName = "";
 const sortKeyType = "";
@@ -145,7 +145,7 @@ app.patch(path + "/updateCart", function(req, res) {
 
   let params = {
     TableName: tableName,
-    Key: { username: req.body.username },
+    Key: { email: req.body.email },
     ReturnValues: "ALL_NEW",
     UpdateExpression: "set #cart = :basket",
     ExpressionAttributeNames: {
@@ -172,7 +172,7 @@ app.patch(path + "/updatePurchases", function(req, res) {
 
   let params = {
     TableName: tableName,
-    Key: { username: req.body.username },
+    Key: { email: req.body.email },
     ReturnValues: "ALL_NEW",
     UpdateExpression: "set #purchases = list_append(if_not_exists(#purchases, :empty_list), :basket)",
     ExpressionAttributeNames: {

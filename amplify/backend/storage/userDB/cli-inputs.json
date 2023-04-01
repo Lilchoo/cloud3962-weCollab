@@ -2,7 +2,7 @@
   "resourceName": "userDB",
   "tableName": "userTable",
   "partitionKey": {
-    "fieldName": "username",
+    "fieldName": "email",
     "fieldType": "string"
   },
   "gsi": [],

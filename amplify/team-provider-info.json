@@ -19,13 +19,46 @@
         "userLambda": {
           "deploymentBucketName": "amplify-wecollabapitest-dev-200129-deployment",
           "s3Key": "amplify-builds/userLambda-5a3575435a4150794f6c-build.zip"
-        }
+        },
+        "userDB": {}
       },
       "storage": {
         "userDB": {}
       },
       "api": {
         "user": {}
+      }
+    }
+  },
+  "cloudtwo": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-wecollabapitest-cloudtwo-140237-authRole",
+      "UnauthRoleArn": "arn:aws:iam::533422962565:role/amplify-wecollabapitest-cloudtwo-140237-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::533422962565:role/amplify-wecollabapitest-cloudtwo-140237-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-wecollabapitest-cloudtwo-140237-deployment",
+      "UnauthRoleName": "amplify-wecollabapitest-cloudtwo-140237-unauthRole",
+      "StackName": "amplify-wecollabapitest-cloudtwo-140237",
+      "StackId": "arn:aws:cloudformation:us-west-2:533422962565:stack/amplify-wecollabapitest-cloudtwo-140237/e0b7f100-c8f4-11ed-8537-0213ba19211b",
+      "AmplifyAppId": "dnlmodqd6mubt"
+    },
+    "categories": {
+      "auth": {
+        "wecollabapitest2424b168": {}
+      },
+      "function": {
+        "userLambda": {
+          "deploymentBucketName": "amplify-wecollabapitest-cloudtwo-140237-deployment",
+          "s3Key": "amplify-builds/userLambda-54526d4e742b34775147-build.zip"
+        },
+        "userDB": {},
+        "purchaselambda": {}
+      },
+      "api": {
+        "user": {}
+      },
+      "storage": {
+        "userDB": {}
       }
     }
   }
