@@ -1,4 +1,4 @@
-WeCollab
+### WeCollab
 Welcome to the project repository for our web application that enables users to browse and purchase merchandise. This application includes essential features such as user authentication, cart management, and payment processing. We have developed this project using React and CSS technologies.
 
 To get started with this project, please follow these steps:
